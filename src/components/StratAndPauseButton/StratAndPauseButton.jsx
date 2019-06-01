@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
-
 import "./StratAndPauseButton.css";
 
 export default function StratAndPauseButton(props) {
@@ -9,18 +8,12 @@ export default function StratAndPauseButton(props) {
     return (
         <div>
             <div className='btnContainer' >
-                <NavLink to="/Assesment" className="testButton" onClick={state === 'START\nТЕSТ' || state === 'Resume' ? () => {
-                    props.setstate("Heating Up")
-                    setstate('Pause')
-                    props.settimerState(1)
-                } : () => {
-                    props.setstate("Paused")
-                    setstate('Resume')
-                    props.settimerState('pauseTimer')
-                }}>{state}</NavLink>
+                <NavLink to="/Assesment" className="testButton" onClick={() => {
+                    props.setStartTimer(1)
+                    props.setShow(1)
+                    setstate('pause')
+                }} >{state}</NavLink>
             </div>
-
         </div>
-
     )
 }
