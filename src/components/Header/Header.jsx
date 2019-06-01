@@ -2,7 +2,7 @@ import React from 'react'
 import "./Header.css";
 
 export default function Header(props) {
-    debugger
+    
     return (
         <header>
             <div className="container h-flex">
