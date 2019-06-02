@@ -2,31 +2,31 @@ import React, { useState, useEffect } from 'react'
 import "./Timer.css";
 
 export default function Timer(props) {
-    const [progressState, setprogressState] = useState(100)
+    
     
     useEffect(() => {      
         let timer = setTimeout(() => {
-            updateProgress(props.time)
+            updateProgress(5)
         }, 100)
-        if (progressState <= 0) {
+
+        if (props.progressState <= 0) {
             clearTimeout(timer)
-            props.setTimerStatus('exerciseDone');
-            setprogressState(100)
-        } else if (props.time.status === 'pauseTimer') {
-            clearTimeout(timer)     
-        }
+            props.setNeedChange(true); 
+        } 
+        // else if (props.time.status === 'pauseTimer') {
+        //     clearTimeout(timer)     
+        // }
     });
 
     function updateProgress(value) {
-        setprogressState(progressState - value)
+        props.setprogressState(props.progressState - value)
     }
 
     return (
-        <div>
-            <div id="progressbar">
-                <div style={{ width: progressState + '%' }}></div>
+        <div className='timerContainer'>
+            <div id="progressbar">        
+                <div style={{ width: props.progressState + '%' }}></div>
             </div>            
         </div>
-
     )
 }

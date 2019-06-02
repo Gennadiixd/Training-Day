@@ -1,3 +1,6 @@
+.timerContainer{
+  display: block;
+}
 #progressbar {
     background-color: black;
     border-radius: 13px;

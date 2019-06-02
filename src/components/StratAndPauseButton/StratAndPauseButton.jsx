@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 import "./StratAndPauseButton.css";
 
+
 export default function StratAndPauseButton(props) {
-    const [state, setstate] = useState('START\nТЕSТ')
 
     return (
         <div>
             <div className='btnContainer' >
-                <NavLink to="/Assesment" className="testButton" onClick={() => {
-                    props.setStartTimer(1)
-                    props.setShow(1)
-                    setstate('pause')
-                }} >{state}</NavLink>
+                <NavLink to="/Heatup" className="testButton" onClick={() => {
+                }} >{'START\nТЕSТ'}</NavLink>
             </div>
         </div>
     )
