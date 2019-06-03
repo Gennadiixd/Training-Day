@@ -5,6 +5,7 @@ import PauseResumeButton from './PauseResumeButton';
 
 export default function Timer(props) {
     const [progressState, setProgressState] = useState(100)
+    const [pauseTimer, setPauseTimer] = useState(false)
 
     useEffect(() => {
         let timer = setTimeout(() => {
@@ -14,10 +15,9 @@ export default function Timer(props) {
         if (progressState <= 0) {
             clearTimeout(timer)
             props.setTimerFinish(true); 
-        }        
-        // else if (props.time.status === 'pauseTimer') {
-        //     clearTimeout(timer)     
-        // }
+        } else if (pauseTimer) {
+            clearTimeout(timer)     
+        }
     });
 
     useEffect(() => {
@@ -35,7 +35,7 @@ export default function Timer(props) {
                     <div style={{ width: progressState + '%' }}></div>
                 </div>
             </div>
-            <PauseResumeButton />
+            <PauseResumeButton setPauseTimer={setPauseTimer}/>
         </>
     )
 }
