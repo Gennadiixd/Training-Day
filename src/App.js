@@ -17,6 +17,8 @@ function App(props) {
       <div className='App'>
         <Header state = {appState}/>
         <Route path='/Heatup' render={(props) => <Heatup />} exact />
+        {/* Route на тренировку */}
+        {/* Route на оценку */}
         <Route path='/' component={StratAndPauseButton} exact />
       </div>    
   );

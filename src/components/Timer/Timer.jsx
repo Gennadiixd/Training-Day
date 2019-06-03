@@ -1,32 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import "./Timer.css";
 
-export default function Timer(props) {
-    
-    
-    useEffect(() => {      
-        let timer = setTimeout(() => {
-            updateProgress(5)
-        }, 100)
+import PauseResumeButton from './PauseResumeButton';
 
-        if (props.progressState <= 0) {
+export default function Timer(props) {
+    const [progressState, setProgressState] = useState(100)
+
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            updateProgress(1)
+        }, props.duration)
+
+        if (progressState <= 0) {
             clearTimeout(timer)
-            props.setNeedChange(true); 
-        } 
+            props.setTimerFinish(true); 
+        }        
         // else if (props.time.status === 'pauseTimer') {
         //     clearTimeout(timer)     
         // }
     });
 
+    useEffect(() => {
+        setProgressState(100)
+    },[props])
+
     function updateProgress(value) {
-        props.setprogressState(props.progressState - value)
+        setProgressState(progressState - value)
     }
 
     return (
-        <div className='timerContainer'>
-            <div id="progressbar">        
-                <div style={{ width: props.progressState + '%' }}></div>
-            </div>            
-        </div>
+        <>
+            <div className='timerContainer'>
+                <div id="progressbar">
+                    <div style={{ width: progressState + '%' }}></div>
+                </div>
+            </div>
+            <PauseResumeButton />
+        </>
     )
 }
