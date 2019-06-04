@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import './Heatup.css'
 
+import fetchExercises from '../../services/fetchExercises'
 import ExerciseContainer from '../ExerciseContainer/ExerciseContainer'
 import Neck from '../HeatUpImg/neck.jpg'
 import Hands from '../HeatUpImg/hands.jpg'
@@ -15,8 +16,7 @@ export default class Activity extends Component {
     }
 
     async componentDidMount() {
-        let res = await fetch(this.props.fetchAdress);
-        let activityExercises = await res.json();
+        let activityExercises = await fetchExercises(this.props.fetchAdress)
         this.setState({ activityExercises: activityExercises}); 
     }
 

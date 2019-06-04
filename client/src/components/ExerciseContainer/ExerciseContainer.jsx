@@ -27,10 +27,6 @@ function ExerciseContainer(props) {
         }
     }, [timerFinish])
 
-    useEffect(() => {
-        console.log('new props')
-    }, [props])
-
     //function changing exercises
     function nextExercise(arrayWithExercises) {
         if (timerFinish) {
