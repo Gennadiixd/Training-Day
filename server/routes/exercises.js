@@ -3,6 +3,7 @@ const { sessionChecker } = require('../middleware/auth');
 const User = require('../models/users');
 const Exercise = require('../models/exersices');
 const Heatup = require('../models/heatup');
+const Assesment = require('../models/assesments');
 const router = express.Router();
 
 router.post('/test', async function (req, res, next) {
@@ -20,13 +21,18 @@ router.post('/test', async function (req, res, next) {
 });
 
 router.get('/heatup', async function (req, res, next) {
-  let heatupExercises = await Heatup.find()
-  res.send(heatupExercises)
+  let exercises = await Heatup.find()
+  res.send(exercises  )
 });
 
 router.get('/training', async function (req, res, next) {
-  let heatupExercises = await Exercise.find()
-  res.send(heatupExercises)
+  let exercises = await Exercise.find()
+  res.send(exercises)
+});
+
+router.get('/assesment', async function (req, res, next) {
+  let exercises = await Assesment.find()
+  res.send(exercises)
 });
 
 module.exports = router;

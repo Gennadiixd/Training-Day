@@ -15,6 +15,10 @@ export default function StratAndPauseButton(props) {
                 <NavLink to="/Training" className="testButton" onClick={() => {
                 }} >{'Training'}</NavLink>
             </div>
+            <div className='btnContainer' >
+                <NavLink to="/Assesment" className="testButton" onClick={() => {
+                }} >{'Assesment'}</NavLink>
+            </div>
         </div>
     )
 }

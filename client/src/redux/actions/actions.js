@@ -14,6 +14,13 @@ export const trainingAC = (exercise) => ({
     }
 })
 
+export const assesmentAC = (exercise) => ({
+    type: CHANGE_STATUS_ASSESMENT,
+    payload: {
+        exercise
+    }
+})
+
 export const startTimerAC = (seconds) => ({
     type: CHANGE_STATUS_HEATUP,
     payload: {

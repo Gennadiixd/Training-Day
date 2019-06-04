@@ -6,12 +6,18 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        
         case CHANGE_STATUS_HEATUP: {
             return ({...state, ...action.payload, status : `Heat Up: ${action.payload.exercise}`})
         }
         case CHANGE_STATUS_TRAINING: {
             return ({...state, ...action.payload, status : `Training: ${action.payload.exercise}`})
         }
+        case CHANGE_STATUS_ASSESMENT: {
+            return ({...state, ...action.payload, status : `Assesment: ${action.payload.exercise}`})
+        }
+
+
         case SET_TIMER_STARTED: {
             return ({...state, ...action.payload, timer : 'started'})
         }

@@ -10,16 +10,17 @@ const mapStateToProps = (state) => ({
 });
 
 function ExerciseContainer(props) {
-
     const [exerciseNumber, setExerciseNumber] = useState(0)
     const [timerFinish, setTimerFinish] = useState(false)
     const [showExerciseAndTimer, setShowExerciseAndTimer] = useState(true)
     const [exerciseArray, setExerciseArray] = useState(props.activityExercises)
+    
     //duration in ms, 100ms = 10sec    
     //send to redux store intended activity i.e. Heatup or Training
     useEffect(() => {        
         props.setActivity(props.activityExercises[exerciseNumber].name)
     }, [exerciseNumber])
+    
     //Change exercise by timer signal
     useEffect(() => {
         if (timerFinish) {
