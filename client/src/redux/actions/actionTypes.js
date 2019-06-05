@@ -7,3 +7,14 @@ export const SET_TIMER_RESUMED = "SET_TIMER_RESUMED";
 export const SET_TIMER_STOPPED = "SET_TIMER_STOPPED";
 export const DECR_EXERCISE_QUANTITY = "DECR_EXERCISE_QUANTITY";
 export const SET_EXERCISE_QUANTITY = "SET_EXERCISE_QUANTITY";
+
+export const SET_HANDS_STR = "SET_HANDS_STR";
+export const SET_HANDS_CON = "SET_HANDS_CON";
+
+export const SET_LEGS_STR = "SET_LEGS_STR";
+export const SET_LEGS_CON = "SET_LEGS_CON";
+
+export const SET_CRUNCH_STR = "SET_CRUNCH_STR";
+export const SET_CRUNCH_CON = "SET_CRUNCH_CON";
+
+export const SET_STR = "SET_STR";

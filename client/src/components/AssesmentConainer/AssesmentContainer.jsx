@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { connect } from "react-redux";
+import { setSTRAC } from "../../redux/actions/actions";
+import './AssesmentContainer.css'
 
 import Exercise from '../Exrcise/Exercise'
 import AssesmentForm from '../AssesmentForm/AssesmentForm'
@@ -13,7 +15,15 @@ function AssesmentContainer(props) {
     const [showExerciseAndForm, setShowExerciseAndForm] = useState(true)
     const [exerciseArray, setExerciseArray] = useState(props.activityExercises)
     const [next, setNext] = useState(false)
-    const [fromForm, setFromForm] = useState(0)
+    const [fromForm, setFromForm] = useState(false)
+
+    useEffect(() => {
+        if (fromForm) {
+            let STR = fromForm * props.activityExercises[exerciseNumber].modifier;
+            props.setSTR(props.activityExercises[exerciseNumber].muscule, STR)
+            setFromForm(false)
+        }
+    }, [fromForm])
 
     useEffect(() => {
         props.setActivity(props.activityExercises[exerciseNumber].name)
@@ -21,7 +31,6 @@ function AssesmentContainer(props) {
 
     //Change exercise by signal from form
     useEffect(() => {
-        debugger
         if (next) {
             nextExercise(exerciseArray)
         }
@@ -43,13 +52,23 @@ function AssesmentContainer(props) {
 
     return (
         <div>
-            {showExerciseAndForm && <Exercise exercise={exerciseArray[exerciseNumber]} />}
-            {showExerciseAndForm && <AssesmentForm setFromForm={setFromForm} fromForm={fromForm} setNext={setNext} />}
+            <div className="imgContainer">
+                {showExerciseAndForm && <Exercise exercise={exerciseArray[exerciseNumber]} />}
+            </div>
+            <div className="assesmentForm">
+                {showExerciseAndForm && <AssesmentForm setFromForm={setFromForm} fromForm={fromForm} setNext={setNext} />}
+            </div>
         </div>
     )
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        setSTR: (muscule, STR) => { dispatch(setSTRAC(muscule, STR)) },
+    }
+}
+
 export default connect(
     mapStateToProps,
-    null,
+    mapDispatchToProps,
 )(AssesmentContainer);
